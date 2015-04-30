@@ -228,11 +228,8 @@ class GetActivityView(View):
         return JsonResponse({'table':response_data})
 
 class GetDailyView(View):
-
-    def get(self, request, *args, **kwargs):
-        query_user = request.GET.get('user_id','-1')
-        query_start_timestamp = int(request.GET.get('start_datetime','-1'))- timezone_offset
-        query_end_timestamp = int(request.GET.get('end_datetime','-1'))- timezone_offset
+    @staticmethod
+    def returnData(query_start_timestamp, query_end_timestamp):
         response_data = []
         for entry in GearData.minutes_aggre_data:
             timestamp = totimestamp(entry['date_time'])
@@ -241,7 +238,18 @@ class GetDailyView(View):
                 raw_entry['time_stamp'] = timestamp + timezone_offset
                 raw_entry['avg_hr'] = entry['mins_avg_hr']
                 response_data.append(raw_entry) 
+        return response_data
+    def get(self, request, *args, **kwargs):
+        query_user = request.GET.get('user_id','-1')
+        query_start_timestamp = int(request.GET.get('start_datetime','-1'))- timezone_offset
+        query_end_timestamp = int(request.GET.get('end_datetime','-1'))- timezone_offset        
+        
+        response_data = GetDailyView.returnData(query_start_timestamp, query_end_timestamp)
         return JsonResponse({'table':response_data})
+
+        
+
+
 
 class GetTrendView(View):
     def get(self, request, *args, **kwargs):

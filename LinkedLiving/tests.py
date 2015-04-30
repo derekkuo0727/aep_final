@@ -1,9 +1,10 @@
 from django.test import TestCase
-from LinkedLiving.views import GetActivityView
+from LinkedLiving.views import GetDailyView
 
 class SimpleTest(TestCase):
-	#Test if get_trend api function
+	#Test if get_daily api function
 	def test_api_get_daily_view(self):
-		jsonResponse = GetActivityView.get("http://127.0.0.1:8000/api/get_trend/?user_id=123&start_datetime=1427871600")
-		self.assertEqual("{\"table\": []}",jsonResponse)
+		daily = GetDailyView()
+		response = daily.returnData(-1,-1)
+		self.assertEqual([],response)
 
