@@ -5,7 +5,7 @@ from email import email
 from bson.json_util import default
 
 class GearSensor(models.Model):
-    user = models.ForeignKey('UserInformation')
+    user = models.ForeignKey('UserInformation', null=True)
     
     OUTDOOR = 'Outdoor'
     INDOOR = 'Indoor'
