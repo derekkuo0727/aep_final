@@ -1,0 +1,315 @@
+body{
+  font-family:'Cabin';
+  color:#432F21;
+  font-size:18px;
+  text-align:center;/*For IE6 Shenanigans*/
+}
+
+.page {
+  width: 980px;
+  background-color: #432F21;
+  margin:0 auto;
+  text-align:left;
+}
+
+.header{
+  background-color: #D6D3C4;
+  /*border-bottom:solid 3px #f2a5cd;*/
+  overflow:hidden;/*content out of container*/
+  position:relative;
+  height: 80px;
+}
+
+.logo{
+  font-size:28px;
+  margin:22px;
+  float:left
+}
+
+.logo > *{
+    vertical-align: middle;
+}/*apply to immediate children*/
+
+ul{
+   list-style-type: none;
+   margin:0px;
+  padding:0px;
+}
+
+li{
+  display:block;  
+}
+.view-tabs
+{
+	display:table;
+	height:100%;
+}
+.tab{
+	font-size:18px;
+	display: table-cell;
+	vertical-align: middle;
+	padding: 20px;
+}
+.active-tab {
+	background-color:#432F21;
+	color:#D6D3C4;
+}
+
+.menu{
+  font-size: 18px;
+  position:absolute;
+  right:0;
+  top:50%;
+  margin-top:-9px;/*font-size*50%*/
+}
+
+.menu >li {
+  /*border-left:solid 2px #4D4D4D;*/
+  padding:0px 30px;
+  display:inline;
+}
+
+.menu >li a{
+	color:#432F21;
+}
+
+/*.menu li:first-child{
+  border-left:none;
+}*/
+
+.content{
+	margin:20px 20px 20px 20px;	
+}
+
+section{
+  background-color:#FFFFFF;
+  /*box-shadow: 2px 2px 2px #D2D2D2;*/
+}
+
+.user-info{
+  float:left;
+  width:190px;
+  text-align:center;
+  padding-top:20px;
+  height:702px;
+}
+
+.location, .local_time{
+  font-size:14px;
+}
+
+.user .portrait{
+  width: 120px;
+  height:120px;
+  border-radius: 60px;
+}
+
+.relatives{
+  padding:0px 0px;
+}
+.relatives >li{
+  margin:20px 0px;
+}
+
+.relatives .portrait{
+  width:65px;
+  height:65px;
+  border-radius:32px;
+}
+
+.health-summary >li >img{
+  margin-top:-30px;
+}
+.health-info{
+  overflow:hidden;
+}
+
+.range-selector{
+  padding:10px 40px;
+  text-align:center;
+  margin:30px 0px;
+}
+
+.range-selector >li{
+  border:solid 1px #C9C9C9;
+  margin:0px 10px;
+  display:inline;
+}
+
+.range-selector>ul>li:hover{
+    background-color:#F2F2F2;
+}
+
+.time-selector{
+  position:relative;
+  margin:40px 100px;
+}
+
+.datetime{
+  text-align:center;
+}
+
+#previous-selector{
+  position:absolute;
+  left:0;
+}
+
+#next-selector{
+  position:absolute;
+  right:0;
+  top:0;
+}
+
+.health-summary {
+  margin:40px 20px;
+  height:410px;
+  
+}
+
+.health-summary >li{
+  padding-bottom:20px;
+}
+
+.subtitle{
+  font-size:16px;
+  margin-top:20px;
+}
+
+.indicator-value{
+  font-size:28px;
+}
+
+.seperator{
+  display:none;
+}
+
+.indicator{
+  margin: 0 auto;/*left=right*/
+  padding-top:20px;
+  width:124px;
+  height:124px;
+  border-radius:62px;
+}
+
+.indicator-size{
+
+}
+
+.chartContainer{
+  padding-top:0px;
+  width:124px;
+  height:124px;
+
+}
+
+.indicator-grey{
+    background-color:#cccccc;
+}
+
+.indicator-green{
+    background-color:#D3F7A9;
+}
+
+.indicator-yellow{
+    background-color:#FEFA99;
+}
+
+.indicator-red{
+    background-color:#F8CBCC;
+}
+
+.health-summary > li{
+  border:solid 1px #C9C9C9;
+  border-radius:20px;
+  margin:0px 20px;
+  float:left;
+  width:190px;
+  text-align:center;
+}
+
+.reference{
+  font-size:16px;
+  text-align:center;
+  margin-bottom:21px;
+}
+
+.reference >li{
+  display:inline;
+  margin-left:28px;
+}
+.activities{
+  clear:both;
+  padding:30px 0px;
+}
+
+
+.time-range{
+  width:190px;
+  float:left;
+  text-align:right;
+  padding-right:35px;
+}
+.from-to{
+  font-size:25px;
+  padding-right:15px;
+}
+
+
+.background, .figure{
+  height:200px;
+  width:600px;
+  background-repeat:no-repeat;
+
+}
+
+.background, .timeline-top-bottom{
+  border-left:solid 2px #C9C9C9;
+  margin-left:190px;
+}
+
+.timeline-top-bottom{
+  height:30px;
+}
+
+.dash-gap{
+  border-left:dotted 2px #C9C9C9;
+  margin-left:190px;
+  height:40px;
+}
+
+.figure{
+  position:relative;
+}
+
+.story-line{
+  position:absolute;
+  right:15px;
+  top:15px;
+  text-align:right;
+}
+
+.activity-info{
+  position:absolute;
+  right:15px;
+  bottom:15px;
+  font-size:16px;
+  margin-right:41px;/*same as img size+padding,b/c img is float*/
+}
+
+.activity-info >div{
+  white-space: nowrap
+}
+
+.activity-info img{
+  float:left;
+  margin-right: 15px;
+}
+
+
+.footer{
+  clear:both;
+  height:36px;
+  background-color: #FFFFFF;
+  border-top:solid 3px #f2a5cd;
+  margin-top:30px;
+}
