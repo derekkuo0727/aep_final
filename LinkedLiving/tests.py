@@ -29,3 +29,8 @@ class SimpleTest(TestCase):
 		activity = GetActivityView()
 		response = activity.returnData(-1,-1)
 		self.assertEqual([],response)
+	def test_api_get_activity_view_input_correct_range(self):
+		activity = GetActivityView()
+		response = activity.returnData(1427871600,1427957999)
+		self.assertEqual(3,len(response))
+		self.assertEqual('168',response[0]["max_hr"])
