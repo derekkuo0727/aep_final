@@ -349,8 +349,19 @@ class GetTrendView(View):
 class GetHealthInfoView(View):
     def get(self, request, *args, **kwargs):
     	query_user = request.GET.get('user_id','-1')
-    	query_start_date_time = todatetime(int(request.GET.get('start_datetime','-1'))-timezone_offset)
-    	query_end_date_time = todatetime(int(request.GET.get('end_datetime','-1'))-timezone_offset)
+        query_start_timestamp = int(request.GET.get('start_datetime','-1'))
+        query_end_timestamp = int(request.GET.get('end_datetime','-1'))
+
+        response_data = GetTrendView.returnData(query_start_timestamp,query_end_timestamp)
+        return JsonResponse(response_data)        
+
+    @staticmethod
+    def returnData(query_start_timestamp, query_end_timestamp):
+        if query_start_timestamp == -1 or query_end_timestamp == -1:
+            return []
+
+    	query_start_date_time = todatetime(query_start_timestamp-timezone_offset)
+    	query_end_date_time = todatetime(query_end_timestamp-timezone_offset)
 
     	response_data = {}
 
@@ -482,4 +493,4 @@ class GetHealthInfoView(View):
             else:
                 response_data['total_steps_storyline'] = "Total steps are in regular range."
 
-        return JsonResponse(response_data)
+        return response_data

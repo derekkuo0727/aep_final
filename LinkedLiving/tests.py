@@ -1,5 +1,5 @@
 from django.test import TestCase
-from LinkedLiving.views import GetDailyView, GetTrendView, GetActivityView
+from LinkedLiving.views import GetDailyView, GetTrendView, GetActivityView, GetHealthInfoView
 
 class SimpleTest(TestCase):
 	#Test if get_daily api function return an empty list while input range is wrong
@@ -29,8 +29,14 @@ class SimpleTest(TestCase):
 		activity = GetActivityView()
 		response = activity.returnData(-1,-1)
 		self.assertEqual([],response)
+	#Test if get_activity api function return the correct json file while input range is correct
 	def test_api_get_activity_view_input_correct_range(self):
 		activity = GetActivityView()
 		response = activity.returnData(1427871600,1427957999)
 		self.assertEqual(3,len(response))
 		self.assertEqual('168',response[0]["max_hr"])
+	#Test if get_health_info api function return an empty list while input range is wrong
+	def test_api_get_health_info_view_input_wrong_range(self):
+		healthinfo = GetHealthInfoView()
+		response = healthinfo.returnData(-1,-1)
+		self.assertEqual([],response)	
