@@ -1,5 +1,5 @@
 from django.test import TestCase
-from LinkedLiving.views import GetDailyView, GetTrendView, GetActivityView, GetHealthInfoView
+from LinkedLiving.views import GetDailyView, GetTrendView, GetActivityView, GetHealthInfoView, GearData
 
 class SimpleTest(TestCase):
 	#Test if get_daily api function return an empty list while input range is wrong
@@ -46,3 +46,8 @@ class SimpleTest(TestCase):
 		response = healthinfo.returnData(1427871600,1427957999)
 		self.assertEqual(12,len(response))
 		self.assertEqual({'total_steps_target': 2500, 'total_steps': 2911, 'avg_hr_storyline': 'Average heart rate is in regular range.', 'avg_hr_target': 80, 'exercise_time': 14, 'avg_hr': 80, 'avg_hr_weekly_benchmark': 82.0, 'exercise_time_weekly_benchmark': 29.0, 'total_steps_weekly_benchmark': 76096.5, 'exercise_time_storyline': 'Exercise time is less than the average on Wednesday', 'exercise_time_target': 20, 'total_steps_storyline': 'Total steps are less than the average on Wednesday'},response)
+	#Test if GearData load correct tables
+	def test_gear_data_activity_detection_data_load_correctly(self):
+		geardata = GearData()
+		self.assertEqual(24, len(geardata.activity_detection_data))
+
