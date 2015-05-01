@@ -1,5 +1,5 @@
 from django.test import TestCase
-from LinkedLiving.views import GetDailyView
+from LinkedLiving.views import GetDailyView, GetTrendView
 
 class SimpleTest(TestCase):
 	#Test if get_daily api function return an empty list while input range is wrong
@@ -12,4 +12,9 @@ class SimpleTest(TestCase):
 		daily = GetDailyView()
 		response = daily.returnData(1427871600,1427957999)
 		self.assertEqual(758,len(response))
+	#Test if get_trend api function return an empty list while input range is wrong
+	def test_api_get_trend_view_input_wrong_range(self):
+		trend = GetTrendView()
+		response = trend.returnData(-1,-1)
+		self.assertEqual([],response)
 

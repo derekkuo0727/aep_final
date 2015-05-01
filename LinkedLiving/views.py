@@ -254,8 +254,15 @@ class GetDailyView(View):
 class GetTrendView(View):
     def get(self, request, *args, **kwargs):
         query_user = request.GET.get('user_id','-1')
-        query_start_date_time = todatetime(int(request.GET.get('start_datetime','-1'))- timezone_offset) 
-        query_end_date_time = todatetime(int(request.GET.get('end_datetime','-1'))- timezone_offset)
+        query_start_timestamp = int(request.GET.get('start_datetime','-1'))- timezone_offset
+        query_end_timestamp = int(request.GET.get('end_datetime','-1'))- timezone_offset   
+
+        response_data = GetTrendView.returnData(query_start_timestamp,query_end_timestamp)
+        return JsonResponse({'table':response_data})
+    @staticmethod
+    def returnData(query_start_timestamp, query_end_timestamp):
+        query_start_date_time = todatetime(query_start_timestamp - timezone_offset) 
+        query_end_date_time = todatetime(query_end_timestamp- timezone_offset)
 
         if query_start_date_time != None:
             target_start_date = query_start_date_time.date()
@@ -331,9 +338,7 @@ class GetTrendView(View):
                 raw_entry['total_steps_baseline'] = 2500
 
                 response_data.append(raw_entry)
-
-
-        return JsonResponse({'table':response_data})
+        return response_data
 
 
 class GetHealthInfoView(View):
