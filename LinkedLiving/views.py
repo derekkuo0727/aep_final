@@ -129,6 +129,11 @@ class GetActivityView(View):
         query_user = request.GET.get('user_id','-1')
         query_start_timestamp = int(request.GET.get('start_datetime','-1')) - timezone_offset
         query_end_timestamp = int(request.GET.get('end_datetime','-1')) - timezone_offset
+        response_data = GetActivityView.returnData(query_start_timestamp, query_end_timestamp)
+        return JsonResponse({'table':response_data})        
+
+    @staticmethod
+    def returnData(query_start_timestamp,query_end_timestamp):
 
         response_data = []
 
@@ -225,7 +230,7 @@ class GetActivityView(View):
                         raw_entry['time_flag'] = -1 
                         response_data.append(raw_entry) 
 
-        return JsonResponse({'table':response_data})
+        return response_data
 
 class GetDailyView(View):
     @staticmethod
